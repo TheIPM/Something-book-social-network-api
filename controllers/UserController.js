@@ -7,7 +7,8 @@ const UserController = {
       const users = await User.find({}).populate('thoughts').populate('friends');
       res.json(users);
     } catch (err) {
-      res.status(500).json(err);
+      console.error(err); // Add this line to log the error in your console
+      res.status(500).json({ error: err.message }); // Change this line to include the error message in the response
     }
   },
 
